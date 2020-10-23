@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  belongs_to :master
-  has_many :review
-  has_many :favorite
   validates :name,presence: true, length:{maximum:15}
   
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]/
@@ -12,9 +9,9 @@ class User < ApplicationRecord
   
   has_secure_password
   
-  has_many :topics
+  has_many :reviews
   has_many :favorites
-  has_many :favorite_topics, through: :favorites, source: 'topic'
+  has_many :favorite_reviews, through: :favorites, source: 'review'
   has_many :comments
-  has_many :comments_topics, through: :comments, source: 'topic'
+  has_many :comments_reviews, through: :comments, source: 'review'
 end

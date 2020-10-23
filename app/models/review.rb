@@ -1,7 +1,13 @@
 class Review < ApplicationRecord
+  validates :user_id, presence: true
+  validates :description, presence: true
+  validates :image, presence: true
+  
+  mount_uploader :image, ImageUploader
+  
   belongs_to :user
-  belongs_to :favorid
-  belongs_to :article
-  belongs_to :gear
-  belongs_to :campsite
+  has_many :favorites
+  has_many :favorite_users, through: :favorites, source: 'user'
+  has_many :comments, dependent: :destroy
+  has_many :comment_users, through: :comments, source: 'user'
 end
