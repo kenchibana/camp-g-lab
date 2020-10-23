@@ -10,20 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_082946) do
-
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
+ActiveRecord::Schema.define(version: 2020_10_22_062844) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -43,7 +30,17 @@ ActiveRecord::Schema.define(version: 2020_10_15_082946) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "faivorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "review_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "review_id"
     t.datetime "created_at", null: false
@@ -68,7 +65,9 @@ ActiveRecord::Schema.define(version: 2020_10_15_082946) do
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.string "contentable_id"
+    t.string "description"
+    t.string "image"
+    t.integer "contentable_id"
     t.string "contentable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,12 +75,13 @@ ActiveRecord::Schema.define(version: 2020_10_15_082946) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "age"
-    t.string "grnder"
-    t.string "from"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
+    t.string "password_digest"
   end
 
+  add_foreign_key "comments", "reviews"
+  add_foreign_key "comments", "users"
 end
