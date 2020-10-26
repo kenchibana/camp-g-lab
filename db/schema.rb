@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_062844) do
+ActiveRecord::Schema.define(version: 2020_10_25_063042) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -56,13 +56,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_062844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "masters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "login_id"
-    t.integer "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.string "description"
@@ -78,8 +71,8 @@ ActiveRecord::Schema.define(version: 2020_10_22_062844) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
     t.string "password_digest"
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "comments", "reviews"

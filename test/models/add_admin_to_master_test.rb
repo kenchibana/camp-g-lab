@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MasterTest < ActiveSupport::TestCase
+class AddAdminToMasterTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
