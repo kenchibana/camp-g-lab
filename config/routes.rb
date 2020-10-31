@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources 'users'
   
   namespace :admin do
-    resources :users
+    resources :apps, :users, :articles, :campsites, :gears
   end
   
   get 'reviews/index'
