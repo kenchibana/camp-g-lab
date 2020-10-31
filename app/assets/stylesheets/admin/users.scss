@@ -1,3 +1,24 @@
 // Place all the styles related to the admin::users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.sidebar {
+  font-size: 30px;
+  position: fixed;
+  top: 150px;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding: 20px;
+  background-color: #D3D3D3;
+  display: inline-block
+}
+.sidebar:hover {
+  font-size: 30px;
+}
+
+.mainbody {
+  font-size: 20px;
+  padding: 150px 50px 100px 300px;
+}
