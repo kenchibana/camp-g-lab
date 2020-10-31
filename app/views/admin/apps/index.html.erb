@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <body>
+    <h1>管理画面</h1>
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <h1><%= link_to users %>
+        <h1><%= link_to article,  %>
+        <h1><%= link_to gaers %>
+        <h1><%= link_to campsites %>
+      </ul>
+    </div>
+      <!-- レスポンシブ対応のために div を追加 -->
+    <div class="table-responsive">
+        <!-- テーブルにクラスを追加 -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to 'Show', user %></td>
+              <td><%= link_to 'Edit', edit_user_path(user) %></td>
+              <!-- 削除ボタンにクラスを追加 -->
+              <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+      
+      <!-- ユーザー追加ボタンにクラスを追加 -->
+     <p><%= link_to 'New User', new_admin_user_path, class: 'btn btn-primary' %></p>
+
+  </body>
