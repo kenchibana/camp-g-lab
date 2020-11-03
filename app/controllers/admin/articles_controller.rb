@@ -4,17 +4,21 @@ class Admin::ArticlesController < ApplicationController
   end
   
   def new
-    @articles = Article.new
+    @article = Article.new
   end
   
   def create
-    @article = current_user.articles.new(article_params)
-    
+    @article = current_master.articles.new(article_params)
     if @article.save
-      redirect_to articles_path, success: '投稿に成功しました'
+      redirect_to ("/admin/articles"), success: '投稿に成功しました'
     else
       flash.now[:denger] = '投稿に失敗しました'
       render :new
     end
+  end
+  
+  private
+  def article_params
+    params.require(:article).permit(:image, :title, :content).merge(master_id: current_master.id)
   end
 end
