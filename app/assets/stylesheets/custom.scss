@@ -68,6 +68,24 @@ h1, h2 {
   }
 }
 
+.master-new-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+
+  .master-new-container {
+    padding-top: 220px;
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+  }
+}
+
 .alert {
   margin-bottom: 0px;
   position: fixed;

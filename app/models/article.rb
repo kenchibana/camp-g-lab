@@ -1,10 +1,10 @@
 class Article < ApplicationRecord
-  belongs_to :master
-  has_many :reviews
+  validates :master_id, presence: true
+  validates :content, presence: true
+  validates :image, presence: true
   
   mount_uploader :image, ImageUploader
   
-  validates :master_id, presence: true
-  validates :description, presence: true
-  validates :image, presence: true
+  belongs_to :master
+  has_many :reviews
 end

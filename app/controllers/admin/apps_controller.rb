@@ -1,14 +1,12 @@
 class Admin::AppsController < ApplicationController
-  before_action :admin_user, only: [:destroy]
+  before_action :admin_master
   
   def index
     @users = User.all
   end
   
-  
-  
   private
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
+    def admin_master
+      redirect_to(root_path) unless current_master.admin?
     end
 end

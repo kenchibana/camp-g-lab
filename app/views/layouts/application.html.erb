@@ -49,12 +49,12 @@
                 <% end %>
               </ul>
           </nav>
+          <script>
+            $(function(){
+               $(".alert").fadeOut(2000);
+            });
+          </script>
         </header>
-        <%= yield %>
-    <script>
-      $(function(){
-         $(".alert").fadeOut(2000);
-      });
-    </script>
+      <%= yield %>
   </body>
 </html>
