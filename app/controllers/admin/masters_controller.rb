@@ -4,8 +4,8 @@ class Admin::MastersController < ApplicationController
   
   def create
     @master = Master.find_by(email: params[:master][:email])
-    if master && master.authenticate(params[:master][:password])
-      log_in master
+    if @master && @master.authenticate(params[:master][:password])
+      log_in @master
       redirect_to root_path, success: 'ログインに成功しました'
     else
       flash.now[:danger] = 'ログインに失敗しました'

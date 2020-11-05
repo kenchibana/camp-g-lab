@@ -21,7 +21,7 @@ class Admin::SessionsController < ApplicationController
   
   private
   def master_params
-    params.require(:masters).permit(:eamil, :passworf, :password_confirmation)
+    params.require(:masters).permit(:login_id, :eamil, :password, :password_confirmation)
   end
   def log_in(master)
     session[:masters] = master.id

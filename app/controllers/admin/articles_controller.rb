@@ -8,7 +8,7 @@ class Admin::ArticlesController < ApplicationController
   end
   
   def create
-    @article = current_master.articles.new(article_params)
+    @article = admin_master.articles.new(article_params)
     if @article.save
       redirect_to ("/admin/articles"), success: '投稿に成功しました'
     else
@@ -19,6 +19,6 @@ class Admin::ArticlesController < ApplicationController
   
   private
   def article_params
-    params.require(:article).permit(:image, :title, :content).merge(master_id: current_master.id)
+    params.require(:article).permit(:image, :title, :content).merge(master_id: admin_master.id)
   end
 end

@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources 'users'
   
   namespace :admin do
-    get    '/login',   to: 'sessions#new'
-    post   '/login',   to: 'sessions#create'
-    delete '/logout',  to: 'sessions#destroy'
-    get 'sessions/new'
+    get    '/login',   to: 'masters#new'
+    post   '/login',   to: 'masters#create'
+    delete '/logout',  to: 'masters#destroy'
+    get 'masters/new'
     resources :masters, :apps, :articles, :campsites, :gears
   end
   

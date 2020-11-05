@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
+  
   def new
   end
 
@@ -12,7 +14,6 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-
   def destroy
     log_out
     redirect_to root_url, info: 'ログアウトしました'
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :eamil, :passworf, :password_confirmation)
+    params.require(:user).permit(:name, :eamil, :password, :password_confirmation)
   end
   def log_in(user)
     session[:user_id] = user.id
@@ -30,4 +31,5 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     @current_user = nil
   end
+  
 end

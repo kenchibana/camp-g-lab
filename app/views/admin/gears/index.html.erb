@@ -1,0 +1,20 @@
+<div class="review-index-wrapper">
+  <div class="container">
+    <% @gears.each do |gear| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="review-index-single">
+            <h2 class="review-author">
+              <%= gear.title %>
+            </h2>
+            <%= image_tag gear.image.url %>
+            <p class="gear-text">
+              <%= gear.content %>
+            </p>
+            <p><%= gear.master.name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
