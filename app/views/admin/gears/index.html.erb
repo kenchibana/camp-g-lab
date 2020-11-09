@@ -5,11 +5,11 @@
         <div class="col-md-6 col-md-offset-3">
           <div class="review-index-single">
             <h2 class="review-author">
-              <a><%= gear.name %></a>
+              <%= link_to gear.name, gear.content %>
             </h2>
             <a><%= image_tag gear.image %></a>
             <p class="gear-text">
-              <a><%= gear.content %></a>
+              <%= link_to "Amazon", gear.content %>
             </p>
             </div>
         </div>
