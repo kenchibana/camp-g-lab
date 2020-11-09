@@ -4,7 +4,7 @@ class CreateCampsites < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :content
       t.integer :master_id
-      t.string :address
+      t.text :address
       t.timestamps
     end
   end
