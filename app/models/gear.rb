@@ -1,7 +1,6 @@
 class Gear < ApplicationRecord
   validates :master_id, presence: true
-  
-  mount_uploader :image, ImageUploader
+  validates :image, presence: true
   
   belongs_to :master
   has_many :reviews

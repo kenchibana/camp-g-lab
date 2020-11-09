@@ -1,0 +1,1 @@
+Gear.create(name: "テンマクデザイン 陣幕mini", content:"陣幕",image:"https://images-na.ssl-images-amazon.com/images/I/51%2Bg3Kqyu0L._AC_SL1000_.jpg",master_id:"1")
