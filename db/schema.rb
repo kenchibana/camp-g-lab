@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_061806) do
 
   create_table "gears", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "content"
+    t.text "content"
     t.string "image"
     t.integer "master_id"
     t.datetime "created_at", null: false
