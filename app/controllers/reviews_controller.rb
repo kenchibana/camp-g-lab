@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
   
   def create
     @review = current_user.reviews.new(review_params)
-    
     if @review.save
       redirect_to reviews_path, success: '投稿に成功しました'
     else

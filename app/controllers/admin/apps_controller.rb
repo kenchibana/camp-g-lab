@@ -1,12 +1,11 @@
 class Admin::AppsController < ApplicationController
-  before_action :admin_master
   
   def index
     @users = User.all
   end
   
   private
-    def admin_master
-      redirect_to(root_path) unless current_master.admin?
+    def admin_masters
+      redirect_to(root_path) unless admin_master.logged_in?
     end
 end
