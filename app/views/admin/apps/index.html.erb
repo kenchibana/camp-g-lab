@@ -10,9 +10,7 @@
         <h1><%= link_to "Users", users_path %></h1>
       </ul>
     </div>
-      <!-- レスポンシブ対応のために div を追加 -->
     <div class="table-responsive">
-        <!-- テーブルにクラスを追加 -->
       <table class="table table-striped">
         <thead>
           <tr>
@@ -22,22 +20,16 @@
         </thead>
       
         <tbody>
-          <% @users.each do |user| %>
+          <% @masters.each do |master| %>
             <tr>
-              <td><%= user.name %></td>
-              <td><%= user.email %></td>
-              <td><%= link_to 'Show', user %></td>
-              <td><%= link_to 'Edit', edit_user_path(user) %></td>
-              <!-- 削除ボタンにクラスを追加 -->
-              <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+              <td><%= master.name %></td>
+              <td><%= master.email %></td>
+              <td><%= link_to 'Destroy', admin_masters_url, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-      
-      <!-- ユーザー追加ボタンにクラスを追加 -->
-    <p><%= link_to 'logout', logout_path, class: 'btn btn-primary' %></p>
-    <p><%= link_to 'New User', new_user_path, class: 'btn btn-primary' %></p>
+    <p><%= link_to 'New Master', new_admin_master_path, class: 'btn btn-primary' %></p>
 
   </body>

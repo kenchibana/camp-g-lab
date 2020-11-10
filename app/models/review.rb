@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   validates :user_id, presence: true
   validates :description, presence: true
   validates :image, presence: true
+  default_scope -> { order(created_at: :desc) }
   
   mount_uploader :image, ImageUploader
   
