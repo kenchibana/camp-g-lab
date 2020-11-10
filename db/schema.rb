@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_11_02_061806) do
     t.string "name"
     t.string "content"
     t.integer "master_id"
-    t.string "address"
+    t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

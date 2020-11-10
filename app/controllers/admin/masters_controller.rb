@@ -1,4 +1,5 @@
 class Admin::MastersController < ApplicationController
+  
   def new
   end
   
@@ -29,5 +30,10 @@ class Admin::MastersController < ApplicationController
   def log_out
     master.delete(:master_id)
     @current_master = nil
+  end
+  
+  
+  def admin_masters
+    redirect_to(root_path) unless admin_master.logged_in?
   end
 end

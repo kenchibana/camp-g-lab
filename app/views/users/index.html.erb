@@ -1,0 +1,27 @@
+<body>
+    <h1>All User</h1>
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+      </ul>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= link_to 'Show', user %></td>
+              <td><%= link_to 'Edit', edit_user_path(user) %></td>
+              <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+    </div>
+</body>

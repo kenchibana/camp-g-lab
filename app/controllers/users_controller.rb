@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @user = User.all
+  end
+  
   def new
     @user = User.new
   end
@@ -11,6 +15,12 @@ class UsersController < ApplicationController
       flash.now[:danger] = "登録に失敗しました"
       render :new
     end
+  end
+  
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User destroyed."
+    redirect_to users_url
   end
 
   private
