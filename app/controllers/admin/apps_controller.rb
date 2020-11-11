@@ -6,6 +6,6 @@ class Admin::AppsController < ApplicationController
   
   private
     def admin_master
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(root_path) unless Master.logger
     end
 end
