@@ -8,9 +8,9 @@ class Admin::MastersController < ApplicationController
   end
 
   def create
-    @master = Master.new(user_params)
+    @master = Master.new(master_params)
     if @master.save
-      redirect_to root_path, success: '登録が完了しました'
+      redirect_to ("/admin/apps"), success: '登録が完了しました'
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
@@ -18,13 +18,13 @@ class Admin::MastersController < ApplicationController
   end
   
   def destroy
-    Master.find(params[:id]).destroy
-    flash[:success] = "Master destroyed."
-    redirect_to masters_url
+    @master = Master.find(params[:id])
+    @master.destroy
+    flash[:success] = "削除しました"
   end
   
   private
   def master_params
-    params.require[:master_id].permit[:name, :login_id, :eamil, :password, :password_confirmation]
+    params.require(:master).permit(:name, :login_id, :eamil, :password, :password_confirmation, :admin)
   end
 end

@@ -1,6 +1,7 @@
 class Master < ApplicationRecord
   validates :name,presence: true, length:{maximum:15}
   validates :login_id,presence: true, length:{maximum:15}
+  validates :admin,presence: true
   
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]/
   validates :email,presence: true, format:{with:VALID_EMAIL_REGEX}

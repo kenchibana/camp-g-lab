@@ -3,6 +3,10 @@ class Admin::ArticlesController < ApplicationController
     @articles = Article.all
   end
   
+  def show
+    @articles = Article.all
+  end
+  
   def new
     @article = Article.new
   end
