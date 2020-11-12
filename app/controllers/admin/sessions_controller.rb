@@ -21,14 +21,14 @@ class Admin::SessionsController < ApplicationController
   
   private
   def master_params
-    params.require(:masters).permit(:login_id, :eamil, :password, :password_confirmation)
+    params.require(:master).permit(:name, :login_id, :eamil, :password, :password_confirmation)
   end
   def log_in(master)
-    session[:masters] = master.id
+    session[:master_id] = master.id
   end
 
-  def log_out(master)
-    session.delete(:masters)
-    @current_master = nil
+  def log_out
+    session.delete(:master_id)
+    @admin_master = nil
   end
 end

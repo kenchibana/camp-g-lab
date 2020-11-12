@@ -13,6 +13,7 @@
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
+          <%= link_to 'New Master', new_admin_master_path, class: 'btn btn-primary' %>
           <tr>
             <th>Name</th>
             <th>Email</th>
@@ -20,16 +21,14 @@
         </thead>
       
         <tbody>
-          <% @masters.each do |master| %>
+          <% @admin_masters.each do |master| %>
             <tr>
               <td><%= master.name %></td>
               <td><%= master.email %></td>
-              <td><%= link_to 'Destroy', admin_masters_url, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
+              <td><%= link_to 'Destroy', @master, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <%= link_to 'New Master', new_admin_master_path, class: 'btn btn-primary' %>
-
   </body>
