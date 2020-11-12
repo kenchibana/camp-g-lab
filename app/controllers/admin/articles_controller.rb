@@ -17,6 +17,21 @@ class Admin::ArticlesController < ApplicationController
     end
   end
   
+  def edit
+    @article = Article.find(params[:id])
+  end
+  
+  def update
+    @article = Article.find_by(id: params[:id])
+    if @article.update(article_params)
+      redirect_to ("/admin/articles"), success: '編集しました'
+    else
+      flash.now[:denger] = '編集に失敗しました'
+      render :edit
+    end
+  end
+  
+    
   private
   def article_params
     params.require(:article).permit(:image, :title, :content).merge(master_id: admin_master.id)

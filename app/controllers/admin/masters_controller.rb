@@ -1,39 +1,30 @@
 class Admin::MastersController < ApplicationController
-  
-  def new
+  def index
+    @master = Master.all
   end
   
+  def new
+    @master = Master.new
+  end
+
   def create
-    @master = Master.find_by(email: params[:master][:email])
-    if @master && @master.authenticate(params[:master][:password])
-      log_in @master
-      redirect_to root_path, success: 'ログインに成功しました'
+    @master = Master.new(user_params)
+    if @master.save
+      redirect_to root_path, success: '登録が完了しました'
     else
-      flash.now[:danger] = 'ログインに失敗しました'
+      flash.now[:danger] = "登録に失敗しました"
       render :new
     end
   end
-  def destroy
-    log_out
-    redirect_to root_url, info: 'ログアウトしました'
-  end
   
+  def destroy
+    Master.find(params[:id]).destroy
+    flash[:success] = "Master destroyed."
+    redirect_to masters_url
+  end
   
   private
   def master_params
-    params.require[:master_id].permit[:eamil, :password, :password_confirmation]
-  end
-  def log_in(master)
-    session[:master_id] = master.id
-  end
-
-  def log_out
-    master.delete(:master_id)
-    @current_master = nil
-  end
-  
-  
-  def admin_masters
-    redirect_to(root_path) unless admin_master.logged_in?
+    params.require[:master_id].permit[:name, :login_id, :eamil, :password, :password_confirmation]
   end
 end
