@@ -22,6 +22,11 @@ class UsersController < ApplicationController
     flash[:success] = "削除しました"
     redirect_to users_url
   end
+  
+  def show
+    @user = current_user.name
+    @reviews = Review.where(user_id: current_user.id)
+  end
 
   private
   def user_params

@@ -1,0 +1,15 @@
+<% @campsites.each do |campsite| %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="review-index-single">
+        <h2 class="review-author">
+          <%= link_to campsite.name, campsite.content %>
+        </h2>
+        <p class="campsite-text">
+          <%= link_to "ホームページ", campsite.content %>
+        </p>
+         <%= link_to "Map",campsite.address %>
+      </div>
+    </div>
+  </div>
+<% end %>

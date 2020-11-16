@@ -1,4 +1,5 @@
 class Admin::ArticlesController < ApplicationController
+  before_action :login_check
   def index
     @articles = Article.all
   end
