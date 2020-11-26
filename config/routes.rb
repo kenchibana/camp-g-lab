@@ -13,9 +13,7 @@ Rails.application.routes.draw do
     resources :masters, :apps, :articles, :campsites, :gears
   end
   
-  get 'reviews/index'
-  get 'reviews/new'
-  resources :reviews,:campsites, :articles, :gears
+  resources :reviews, :campsites, :articles, :gears
   
   
   root 'pages#index'
