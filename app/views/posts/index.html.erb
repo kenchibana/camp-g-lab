@@ -1,0 +1,39 @@
+<div class="review-index-wrapper">
+  <div class="container">
+    <% @reviews.each do |review| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="review-index-single">
+            <h2 class="review-author">
+              <%= review.user.name %>
+            </h2>
+            <%= image_tag review.image.url %>
+            <% if !review.favorite_users.include?(current_user) %>
+              <%= link_to favorites_path(review_id: review.id), method: :post do %>
+                <%= image_tag 'icons/heart-black.png', class: 'like-btn' %>
+              <% end %>
+            <% else %>
+              <%= link_to favorites_path(review_id: review.id), method: :delete do %>
+                <%= image_tag 'icons/heart-black.png', class: 'unlike-btn' %>
+              <% end %>
+            <% end %>
+            <%= review.favorite_users.count %>
+            <%= link_to comments_new_path(review_id: review.id),remote: true do %>
+              <%= image_tag 'icons/comment.png', class: 'review-index-icon ' %>
+            <% end %>
+            <p class="review-text">
+              <%= review.description %>
+            </p>
+            <h4 class="comment-title">投稿コメント</h4>
+            
+            <div id=<%= "comment_new#{review.id}" %>></div>
+            
+            <% review.comments.each do |comment| %>
+              <p><%= comment.body %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

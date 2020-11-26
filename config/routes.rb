@@ -13,9 +13,7 @@ Rails.application.routes.draw do
     resources :masters, :apps, :articles, :campsites, :gears
   end
   
-  get 'reviews/index'
-  get 'reviews/new'
-  resources :reviews
+  resources :reviews, :campsites, :articles, :gears
   
   
   root 'pages#index'
@@ -29,5 +27,4 @@ Rails.application.routes.draw do
   get 'comments/new' 
   post '/comments', to: "comments#create"
   delete '/comments', to: "comments#destroy"
-  
 end

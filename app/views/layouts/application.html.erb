@@ -26,8 +26,13 @@
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to new_review_path do %>
+                    <%= link_to "/reviews/new" do %>
                       <%= image_tag "icons/camera.png" %>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to "/users/#{current_user.id}" do %>
+                      <%= image_tag "icons/_i_icon_14074_icon_140740_256.png" %>
                     <% end %>
                   </li>
                   <li>
@@ -61,6 +66,20 @@
             });
           </script>
         </header>
+        <div class="top-hero-wrapper text-center">
+          <div class="container top-hero-container">
+            <h1 class="text-white">CAMP GLAB</h1>
+            <h2 class="text-white">キャンプ情報満載</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="flex-container">
+            <div class="flex-item"><a href="/articles">キャンプ特集</a></div>
+            <div class="flex-item"><a href="/gears">キャンプギア</a></div>
+            <div class="flex-item"><a href="/campsites">キャンプ場</a></div>
+            <div class="flex-item"><a href="/reviews">レビュー</a></div>
+          </div>
+        </div>
       <%= yield %>
   </body>
 </html>

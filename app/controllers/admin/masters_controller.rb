@@ -25,6 +25,6 @@ class Admin::MastersController < ApplicationController
   
   private
   def master_params
-    params.require(:master).permit(:name, :login_id, :eamil, :password, :password_confirmation, :admin)
+    params.require(:master).permit(:name, :login_id, :email, :password, :password_confirmation, :admin)
   end
 end

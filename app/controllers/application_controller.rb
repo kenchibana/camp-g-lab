@@ -17,4 +17,10 @@ class ApplicationController < ActionController::Base
   def sing_in?
     !admin_master.nil?
   end
+  
+  def login_check
+    if admin_master.nil?
+      redirect_to (root_path), danger: "ログインしてください"
+    end
+  end
 end
